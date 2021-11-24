@@ -1,4 +1,4 @@
-import { Button, Table } from 'antd'
+import { Button, Table, message } from 'antd'
 import Excel from 'exceljs'
 import { useState, useEffect } from 'react'
 const { ipcRenderer } = window.require('electron')
@@ -130,7 +130,8 @@ export default (props: DataPreviewProps) => {
     document.body.appendChild(a)
     a.click()
     document.body.removeChild(a)
-    ipcRenderer.send('export-res', kucunWb)
+
+    message.success('导出成功!')
   }
 
   return (
