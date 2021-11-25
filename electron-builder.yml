@@ -1,0 +1,7 @@
+appId: kucun_sys
+publish:
+  provider: github
+  token: tt
+directories:
+  output: release/
+  buildResources: build

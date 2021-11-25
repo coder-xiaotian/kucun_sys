@@ -1,1 +1,3 @@
-import 'windi.css'
+import 'windi.css';
+
+console.log('app test');

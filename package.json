@@ -1,13 +1,42 @@
 {
+  "name": "kucun_sys",
+  "version": "1.0.0",
+  "main": "app-entry.js",
+  "author": {
+    "name": "xtwan",
+    "email": "wanxiaotian888@gmail.com"
+  },
+  "description": "库存管理应用",
   "private": true,
   "scripts": {
-    "start:app": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:8000 && cross-env NODE_ENV=development electron app/main.ts\"",
+    "start:app": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:8000 && cross-env NODE_ENV=development electron app-entry.js\"",
     "start": "umi dev",
     "build": "umi build",
+    "build:mac-app": "electron-builder --mac --x64",
+    "build:win-app": "electron-builder --win --x64",
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage"
+  },
+  "build": {
+    "appId": "com.xtwan.app",
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "files": [
+      "build/**/*",
+      "app-entry.js"
+    ]
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -35,6 +64,8 @@
     "concurrently": "^6.4.0",
     "cross-env": "^7.0.3",
     "electron": "^16.0.1",
+    "electron-builder": "^22.14.5",
+    "express": "^4.17.1",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.0",
     "typescript": "^4.1.2",
